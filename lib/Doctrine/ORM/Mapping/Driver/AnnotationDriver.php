@@ -365,6 +365,7 @@ class AnnotationDriver extends AbstractAnnotationDriver
                 $metadata->mapOneToOne($mapping);
             } else if ($oneToManyAnnot = $this->reader->getPropertyAnnotation($property, Mapping\OneToMany::class)) {
                 $mapping['mappedBy'] = $oneToManyAnnot->mappedBy;
+                $mapping['mappedByType'] = $oneToManyAnnot->mappedByType;
                 $mapping['targetEntity'] = $oneToManyAnnot->targetEntity;
                 $mapping['cascade'] = $oneToManyAnnot->cascade;
                 $mapping['indexBy'] = $oneToManyAnnot->indexBy;
