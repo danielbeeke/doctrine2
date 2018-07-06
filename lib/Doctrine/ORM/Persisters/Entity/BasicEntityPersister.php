@@ -1815,6 +1815,18 @@ class BasicEntityPersister implements EntityPersister
                 continue;
             }
 
+            if (isset($sourceClass->associationMappings[$assoc['fieldName']]['mappedByType'])) {
+                $mappedByType = $sourceClass->associationMappings[$assoc['fieldName']]['mappedByType'];
+                $criteria[$tableAlias . "." . $mappedByType['field']] = $mappedByType['value'];
+
+                $parameters[] = [
+                    'value' => $mappedByType['value'],
+                    'field' => $mappedByType['field'],
+                    'class' => $sourceClass,
+                ];
+            }
+
+
             $field = $sourceClass->fieldNames[$sourceKeyColumn];
             $value = $sourceClass->reflFields[$field]->getValue($sourceEntity);
 

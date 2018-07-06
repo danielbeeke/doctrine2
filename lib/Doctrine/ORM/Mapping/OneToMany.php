@@ -31,6 +31,11 @@ final class OneToMany implements Annotation
     public $mappedBy;
 
     /**
+     * @var array
+     */
+    public $mappedByType;
+
+    /**
      * @var string
      */
     public $targetEntity;
